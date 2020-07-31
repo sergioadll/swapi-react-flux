@@ -20,7 +20,6 @@ const injectContext = PassedComponent => {
 					})
 			})
 		);
-		console.log(state.store);
 		useEffect(() => {
 			/**
 			 * EDIT THIS!
@@ -31,7 +30,8 @@ const injectContext = PassedComponent => {
 			 state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
-			state.actions.loadPlanets();
+			state.actions.loadData("people/");
+			state.actions.loadData("planets/");
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,

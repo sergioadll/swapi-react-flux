@@ -1,56 +1,34 @@
+const url = "https://swapi.dev/api/";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			people: [],
+			planets: []
 		},
 		actions: {
 			// Use getActions to call a function within a function
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			loadPeople: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-                */
+			loadData: async (data, resource) => {
+				const fullUrl = url.concat(data);
 				var requestOptions = {
 					method: "GET",
 					redirect: "follow"
 				};
-
-				fetch("https://swapi.dev/api/people/", requestOptions)
-					.then(response => response.json())
-					.then(result => setStore({ people: result }))
-					.catch(error => console.log("error", error));
+				try {
+					let res = await fetch(fullUrl, requestOptions);
+					let result = await res.json();
+					if (data == "people/") {
+						setStore({ people: result.results });
+					} else if (data == "planets/") {
+						setStore({ planets: result.results });
+					}
+				} catch (error) {
+					console.log("error", error);
+				}
 			},
-			loadPlanets: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-                */
-				var requestOptions = {
-					method: "GET",
-					redirect: "follow"
-				};
-
-				fetch("https://swapi.dev/api/planets/", requestOptions)
-					.then(response => response.json())
-					.then(result => {
-						setStore({ planets: result });
-						console.log("planets", typeof result);
-					})
-					.catch(error => console.log("error", error));
-			},
-
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
