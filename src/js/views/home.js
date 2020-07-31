@@ -12,14 +12,14 @@ export const Home = () => {
 			<div className="card-group">
 				{store.people.map((element, index) => {
 					//console.log(character.name);
-					return <AllCards key={index} element={element} />;
+					return <AllCards key={index} prop1={element.name} />;
 				})}
 			</div>
 			<h2>planets</h2>
 			<div className="card-group">
 				{store.planets.map((element, index) => {
-					console.log(element.name);
-					return <AllCards key={index} element={element} />;
+					//console.log(element.name);
+					return <AllCards key={index} prop1={element.name} />;
 				})}
 			</div>
 		</div>
