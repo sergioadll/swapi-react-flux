@@ -44,7 +44,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch("https://swapi.dev/api/planets/", requestOptions)
 					.then(response => response.json())
-					.then(result => setStore({ planets: result }))
+					.then(result => {
+						setStore({ planets: result });
+						console.log("planets", typeof result);
+					})
 					.catch(error => console.log("error", error));
 			},
 
