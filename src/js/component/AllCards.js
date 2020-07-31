@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export const AllCards = props => {
 	const { key, prop1 } = props;
-	console.log(prop1);
+	//console.log(prop1);
 
 	return (
 		<div className="card">
@@ -17,5 +17,5 @@ export const AllCards = props => {
 /**style="width: 18rem;"*/
 AllCards.propTypes = {
 	key: PropTypes.number,
-	prop1: PropTypes.object
+	prop1: PropTypes.string
 };
