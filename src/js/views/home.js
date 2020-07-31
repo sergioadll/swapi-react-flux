@@ -8,10 +8,21 @@ export const Home = () => {
 
 	return (
 		<div>
-			{store.people.map((character, index) => {
-				//console.log(character.name);
-				return <AllCards key={index} people={character} />;
-			})}
+			<h2>Characters</h2>
+			<div className="card-group">
+				{store.people.map((element, index) => {
+					//console.log(character.name);
+					return <AllCards key={index} element={element} />;
+				})}
+			</div>
+			<h2>planets</h2>
+			<div className="card-group">
+				{store.planets.map((element, index) => {
+					console.log(element.name);
+					return <AllCards key={index} element={element} />;
+				})}
+			</div>
 		</div>
 	);
 };
+/** */
