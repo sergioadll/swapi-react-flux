@@ -1,0 +1,12 @@
+.scrollx {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+
+  .card {
+    width: 10rem;
+    height:13rem;
+    flex: 0 0 auto;
+  }
+}

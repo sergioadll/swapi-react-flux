@@ -11,7 +11,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			loadData: async (data, resource) => {
+			loadAllData: () => {
+				let lastPagePeople = false;
+				let lastPagePlanets = false;
+				do {
+					getActions().loadData("people/");
+					const store = getStore();
+					console.log(store.people);
+					lastPagePeople = true;
+				} while (!lastPagePeople);
+				do {
+					getActions().loadData("planets/");
+					lastPagePlanets = true;
+				} while (!lastPagePlanets);
+			},
+			loadData: async data => {
 				const fullUrl = url.concat(data);
 				var requestOptions = {
 					method: "GET",
@@ -21,9 +35,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let res = await fetch(fullUrl, requestOptions);
 					let result = await res.json();
 					if (data == "people/") {
-						setStore({ people: result.results });
+						//console.log(result.results);
+						//console.log(result);
+						setStore({ people: result });
 					} else if (data == "planets/") {
-						setStore({ planets: result.results });
+						setStore({ planets: result });
 					}
 				} catch (error) {
 					console.log("error", error);
