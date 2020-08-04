@@ -53,15 +53,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addFavorite: (prevFavorites, name, url) => {
 				const oneFavorite = { name: name, url: url };
 				const updateFavorites = prevFavorites.concat(oneFavorite);
-				setStore({ favorites: updateFavorites });
-				//console.log("FLUX: Favorites 1 object", oneFavorite);
-				//console.log("FLUX: url addFavorite", url);
+                setStore({ favorites: updateFavorites });
+                //a conditional is needed in order to not repeat the character or that calls rvFavorites when is already added to favorites
 			},
 			rvFavorite: index => {
 				const fav = getStore().favorites;
 				fav.splice(index, 1);
 				//console.log("FLUX: rvFavorites", fav, index);
-				setStore({ favorites: fav });
+                setStore({ favorites: fav });
 			},
 
 			changeColor: (index, color) => {
