@@ -3,8 +3,9 @@ const url = "https://swapi.dev/api/";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			people: [],
-			planets: []
+			people: ["Loading People"],
+			planets: ["Loading Planets"],
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a function
@@ -49,6 +50,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("error", error);
 				}
 			},
+			addFavorite: (prevFavorites, name, url) => {
+				const oneFavorite = { name: name, url: url };
+				const updateFavorites = prevFavorites.concat(oneFavorite);
+				setStore({ favorites: updateFavorites });
+				//console.log("FLUX: Favorites 1 object", oneFavorite);
+				//console.log("FLUX: url addFavorite", url);
+			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

@@ -13,17 +13,19 @@ export const Home = () => {
 			<div className="card-group scrollx">
 				{store.people.map((element, index) => {
 					//console.log(index);
-					//detalles variable a la que se asigna la estructura html de los detalles del personaje
+					//peopledetails variable a la que se asigna la estructura html de los detalles del personaje
 					const peopleDetails = [
 						{ field: "Gender: ", data: element.gender },
 						{ field: "Eye Color: ", data: element.eye_color },
 						{ field: "Hair Color: ", data: element.hair_color }
 					];
+					const peopleUrl = "/singlecharacter/" + (index + 1);
+
 					//console.log("details", details);
 					return (
-						<Link key={index} to={"/singlecharacter/" + (index + 1)}>
-							<Card key={index} name={element.name} details={peopleDetails} />
-						</Link>
+						/**<Link key={index} to={peopleUrl}>*/
+						<Card key={index} url={peopleUrl} name={element.name} details={peopleDetails} />
+						/**</Link>*/
 					);
 				})}
 			</div>
@@ -32,14 +34,15 @@ export const Home = () => {
 				{store.planets.map((element, index) => {
 					const planetDetails = [
 						{ field: "Climate: ", data: element.climate },
-						{ field: "Terrain: ", data: element.terrain },
+						{ field: "Population: ", data: element.population },
 						{ field: "Diameter: ", data: element.diameter }
 					];
-					//console.log("map planet", planetDetails);
+					const planetUrl = "/singleplanet/" + (index + 1);
+					//console.log("url planet", planetUrl);
 					return (
-						<Link key={index} to={"/singleplanet/" + (index + 1)}>
-							<Card key={index} name={element.name} details={planetDetails} />
-						</Link>
+						/**<Link key={index} to={planetUrl}>*/
+						<Card key={index} url={planetUrl} name={element.name} details={planetDetails} />
+						/**</Link>*/
 					);
 				})}
 			</div>

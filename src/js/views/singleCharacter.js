@@ -7,7 +7,7 @@ export const SingleCharacter = props => {
 	const { store, actions } = useContext(Context);
 	const { theid } = useParams();
 	const character = store.people[theid - 1];
-	console.log(character);
+	//console.log(character);
 
 	return (
 		<div className="jumbotron">
