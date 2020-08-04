@@ -57,6 +57,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//console.log("FLUX: Favorites 1 object", oneFavorite);
 				//console.log("FLUX: url addFavorite", url);
 			},
+			rvFavorite: index => {
+				const fav = getStore().favorites;
+				fav.splice(index, 1);
+				//console.log("FLUX: rvFavorites", fav, index);
+				setStore({ favorites: fav });
+			},
 
 			changeColor: (index, color) => {
 				//get the store

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Dropdown from "react-bootstrap/Dropdown";
+import Button from "react-bootstrap/Button";
+import "../../styles/navbar.scss";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
@@ -16,18 +18,20 @@ export const Navbar = () => {
 					Favorites
 				</Dropdown.Toggle>
 
-				<Dropdown.Menu>
+				<Dropdown.Menu className="dropdown-box">
 					<div>
 						{store.favorites.map((element, index) => {
-							console.log("NAVBAR: dropdown id", element.url);
+							//console.log("NAVBAR: dropdown id", element.url);
 							return (
-								//needs to be linked to the id of the favorite object (element.id)
-								<Dropdown.Item key={index} href={element.url}>
-									{element.name}
-									<button type="button" className="btn btn-danger btn-sm ml-auto">
+								<div key={index} className="row">
+									<Dropdown.Item href={element.url}>{element.name}</Dropdown.Item>
+									<Button
+										type="button"
+										className="btn btn-danger btn-sm ml-auto"
+										onClick={() => actions.rvFavorite({ index })}>
 										x
-									</button>
-								</Dropdown.Item>
+									</Button>
+								</div>
 							);
 						})}
 					</div>
