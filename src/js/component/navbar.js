@@ -9,7 +9,7 @@ export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	//console.log("Store in navbar", store.favorites);
 	return (
-		<nav className="navbar navbar-light mb-3">
+		<nav className="navbar border-bottom border-primary mb-3">
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1 text-white">Star Wars</span>
 			</Link>
