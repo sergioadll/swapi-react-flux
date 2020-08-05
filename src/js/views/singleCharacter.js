@@ -6,7 +6,7 @@ export const SingleCharacter = props => {
 	const { store, actions } = useContext(Context);
 	const { theid } = useParams();
 	const character = store.people[theid - 1];
-	console.log("SC:char", store);
+	//console.log("SC:char", store);
 	//console.log("SC:character", character);
 	if (store.people.length > 1) {
 		return (
@@ -32,6 +32,6 @@ export const SingleCharacter = props => {
 			</div>
 		);
 	} else {
-		return <h2 className="text-light">Loading Character</h2>;
+		return <h2 className="text-light">Loading Character...</h2>;
 	}
 };

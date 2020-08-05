@@ -43,7 +43,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let next = await setStore({});
 					if (data == "people/") {
 						//console.log(result.results);
-						console.log(result);
+						//console.log(result);
 						setStore({ people: result.results });
 					} else if (data == "planets/") {
 						setStore({ planets: result.results });
@@ -55,9 +55,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addFavorite: (name, url) => {
 				const oneFavorite = { name: name, url: url };
 				const prevFavorites = getStore().favorites;
-				const updateFavorites = prevFavorites.concat(oneFavorite);
-				setStore({ favorites: updateFavorites });
-				//a conditional is needed in order to not repeat the character or that calls rvFavorites when is already added to favorites
+				const existentFavorite = prevFavorites.filter(prevFavorites => prevFavorites.name === name);
+				if (existentFavorite.length == 0) {
+					//if the element is not in favorites we add it to the store
+					const updateFavorites = prevFavorites.concat(oneFavorite);
+					setStore({ favorites: updateFavorites });
+				} else {
+					//if the element is already in favorites we delete it and update the store
+					const newFavorites = prevFavorites.filter(prevFavorites => prevFavorites.name !== name);
+					setStore({ favorites: newFavorites });
+				}
 			},
 			removeFavorite: index => {
 				const fav = getStore().favorites;

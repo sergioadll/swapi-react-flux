@@ -29,7 +29,7 @@ export const Card = props => {
 					<Button href={url}>Details</Button>
 					<Button
 						type="button"
-						className="btn btn-dark justify-content-center"
+						className="btn btn-dark justify-content-center active"
 						onClick={() => actions.addFavorite(name, url)}>
 						Fav
 					</Button>
