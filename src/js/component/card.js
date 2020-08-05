@@ -30,7 +30,7 @@ export const Card = props => {
 					<Button
 						type="button"
 						className="btn btn-dark justify-content-center"
-						onClick={() => actions.addFavorite(store.favorites, name, url)}>
+						onClick={() => actions.addFavorite(name, url)}>
 						Fav
 					</Button>
 				</div>

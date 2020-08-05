@@ -21,7 +21,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				do {
 					getActions().loadData("people/");
 					const store = getStore();
-					//console.log(store.people);
+					//const next = store.people.next;
+					//if (next=null){break}//console.log(store.people);
+					//let index++;
 					lastPagePeople = true;
 				} while (!lastPagePeople);
 				do {
@@ -41,7 +43,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let next = await setStore({});
 					if (data == "people/") {
 						//console.log(result.results);
-						//console.log(result);
+						console.log(result);
 						setStore({ people: result.results });
 					} else if (data == "planets/") {
 						setStore({ planets: result.results });
@@ -50,17 +52,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("error", error);
 				}
 			},
-			addFavorite: (prevFavorites, name, url) => {
+			addFavorite: (name, url) => {
 				const oneFavorite = { name: name, url: url };
+				const prevFavorites = getStore().favorites;
 				const updateFavorites = prevFavorites.concat(oneFavorite);
-                setStore({ favorites: updateFavorites });
-                //a conditional is needed in order to not repeat the character or that calls rvFavorites when is already added to favorites
+				setStore({ favorites: updateFavorites });
+				//a conditional is needed in order to not repeat the character or that calls rvFavorites when is already added to favorites
 			},
-			rvFavorite: index => {
+			removeFavorite: index => {
 				const fav = getStore().favorites;
 				fav.splice(index, 1);
 				//console.log("FLUX: rvFavorites", fav, index);
-                setStore({ favorites: fav });
+				setStore({ favorites: fav });
 			},
 
 			changeColor: (index, color) => {

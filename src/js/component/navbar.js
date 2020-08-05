@@ -28,7 +28,7 @@ export const Navbar = () => {
 									<Button
 										type="button"
 										className="btn btn-danger btn-sm ml-auto"
-										onClick={() => actions.rvFavorite({ index })}>
+										onClick={() => actions.removeFavorite({ index })}>
 										x
 									</Button>
 								</div>
