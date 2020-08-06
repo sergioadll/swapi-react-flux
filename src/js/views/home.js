@@ -8,7 +8,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="p-0">
+		<div className="p-0 bg-dark">
 			<h2 className="text-white">Characters</h2>
 			<div className="card-group scrollx">
 				{store.people.map((element, index) => {
@@ -21,14 +21,10 @@ export const Home = () => {
 					];
 					const peopleUrl = "/singlecharacter/" + (index + 1);
 
-					//console.log("details", details);
-					return (
-						/**<Link key={index} to={peopleUrl}>*/
-						<Card key={index} url={peopleUrl} name={element.name} details={peopleDetails} />
-						/**</Link>*/
-					);
+					return <Card key={index} url={peopleUrl} name={element.name} details={peopleDetails} />;
 				})}
 			</div>
+
 			<h2 className="text-white">Planets</h2>
 			<div className="card-group scrollx">
 				{store.planets.map((element, index) => {
@@ -39,11 +35,7 @@ export const Home = () => {
 					];
 					const planetUrl = "/singleplanet/" + (index + 1);
 					//console.log("url planet", planetUrl);
-					return (
-						/**<Link key={index} to={planetUrl}>*/
-						<Card key={index} url={planetUrl} name={element.name} details={planetDetails} />
-						/**</Link>*/
-					);
+					return <Card key={index} url={planetUrl} name={element.name} details={planetDetails} />;
 				})}
 			</div>
 		</div>

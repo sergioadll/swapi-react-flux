@@ -11,7 +11,7 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar border-bottom border-primary mb-3">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1 text-white">Star Wars</span>
+				<span className="navbar-brand mb-0 h1 text-warning">Star Wars</span>
 			</Link>
 			<Dropdown>
 				<Dropdown.Toggle className="btn btn-light text-warning" variant="success" id="dropdown-basic">
