@@ -11,26 +11,23 @@ export const Card = props => {
 	//console.log("CARD: url type", typeof url, url);
 	//console.log("details on all cards", details);
 	return (
-		<div className="container">
-			<div className="card rounded bg-light m-1 p-1 border">
-				<div className="card-body">
-					<h5 className="card-title">{name}</h5>
-					<hr className="p-0 m-0" />
-					<p className="card-text">
-						{details[0].field}
-						{details[0].data}
-						<br />
-						{details[1].field}
-						{details[1].data}
-						<br />
-						{details[2].field}
-						{details[2].data}
-					</p>
+		<div className="card rounded bg-light m-1 p-1 border">
+			<div className="card-body d-flex flex-column">
+				<h5 className="card-title">{name}</h5>
+				<hr className="p-0 m-0" />
+				<p className="card-text mb-0">
+					{details[0].field}
+					{details[0].data}
+					<br />
+					{details[1].field}
+					{details[1].data}
+					<br />
+					{details[2].field}
+					{details[2].data}
+				</p>
+				<div className="justify-content-center align-self-baseline">
 					<Button href={url}>Details</Button>
-					<Button
-						type="button"
-						className="btn btn-dark justify-content-center active"
-						onClick={() => actions.addFavorite(name, url)}>
+					<Button type="button" className="btn btn-dark " onClick={() => actions.addFavorite(name, url)}>
 						Fav
 					</Button>
 				</div>

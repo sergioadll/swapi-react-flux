@@ -9,7 +9,7 @@ export const Home = () => {
 
 	return (
 		<div className="p-0 bg-dark">
-			<h2 className="text-white">Characters</h2>
+			<h2 className="text-white pl-3">Characters</h2>
 			<div className="card-group scrollx">
 				{store.people.map((element, index) => {
 					//console.log(index);
@@ -25,7 +25,7 @@ export const Home = () => {
 				})}
 			</div>
 
-			<h2 className="text-white">Planets</h2>
+			<h2 className="text-white  pl-3">Planets</h2>
 			<div className="card-group scrollx">
 				{store.planets.map((element, index) => {
 					const planetDetails = [

@@ -24,11 +24,13 @@ export const Navbar = () => {
 							//console.log("NAVBAR: dropdown id", element.url);
 							return (
 								<div key={index} className="row">
-									<Dropdown.Item href={element.url}>{element.name}</Dropdown.Item>
+									<Dropdown.Item href={element.url}>
+										<span className="dropdown-item">{element.name}</span>
+									</Dropdown.Item>
 									<Button
 										type="button"
-										className="btn btn-danger btn-sm ml-auto"
-										onClick={() => actions.removeFavorite({ index })}>
+										className="btn btn-danger btn-sm ml-auto mr-4"
+										onClick={() => actions.removeFavorite(index)}>
 										x
 									</Button>
 								</div>
