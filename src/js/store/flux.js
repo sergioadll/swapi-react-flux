@@ -1,7 +1,3 @@
-const url = "https://swapi.dev/api/";
-let lastPagePeople = false;
-let lastPagePlanets = false;
-
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -98,19 +94,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ favorites: fav });
 			},
 
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+			changeColor: classProperties => {
+				const [buttonBaseClass, setButtonBaseClass] = useState("btn btn-dark ml-3");
+				classProperties = "btn btn-warning ml-3";
+				console.log("FLUX: changeColor class", classProperties);
+				return classProperties;
 			}
 		}
 	};

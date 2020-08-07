@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import { AddFavButton } from "./addFavButton";
 
 import PropTypes from "prop-types";
 
@@ -25,11 +26,11 @@ export const Card = props => {
 					{details[2].field}
 					{details[2].data}
 				</p>
-				<div className="justify-content-center align-self-baseline">
-					<Button href={url}>Details</Button>
-					<Button type="button" className="btn btn-dark " onClick={() => actions.addFavorite(name, url)}>
-						Fav
-					</Button>
+				<div className="mt-auto">
+					<Link to={url}>
+						<Button href="">Details</Button>
+					</Link>
+					<AddFavButton name={name} url={url} />
 				</div>
 			</div>
 		</div>
