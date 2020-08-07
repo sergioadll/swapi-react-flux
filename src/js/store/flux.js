@@ -13,7 +13,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			loadAllPeople: async () => {
-				for (let i = 1; i < 20; i++) {
+				//while next!= null
+				for (let i = 1; ; i++) {
 					let next = getStore().nextPeople;
 					if (next === null) {
 						break;
